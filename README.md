@@ -12,7 +12,6 @@ Results are retrieved in two csv's "Testing.csv" and "grading_results.csv". The 
 - Preliminary.csv
 - Testing.csv
 - grade_count.csv
-- grading_results.csv
 
 ## CSV's required for script to function
 
