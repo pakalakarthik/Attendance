@@ -1,0 +1,118 @@
+let
+    txt = [View Duration],
+
+    h =
+        if Text.Contains(txt, "h") then
+            Number.FromText(Text.BeforeDelimiter(txt, "h"))
+        else
+            0,
+
+    m =
+        if Text.Contains(txt, "min") then
+            if Text.Contains(txt, "h") then
+                Number.FromText(
+                    Text.Select(
+                        Text.BeforeDelimiter(Text.AfterDelimiter(txt, "h"), "min"),
+                        {"0".."9"}
+                    )
+                )
+            else
+                Number.FromText(
+                    Text.Select(
+                        Text.BeforeDelimiter(txt, "min"),
+                        {"0".."9"}
+                    )
+                )
+        else
+            0
+in
+    h * 60 + m
+
+
+
+
+    Step 1: Select your data
+
+Click any cell inside your table (the one with View Duration).
+
+Make sure your data has headers.
+
+Step 2: Open Power Query
+
+Go to the Data tab (top ribbon)
+
+Click From Table/Range
+
+👉 Excel will open Power Query Editor
+
+If Excel asks “Create Table?” → click OK
+
+Step 3: Add a Custom Column
+
+Inside Power Query Editor:
+
+Go to Add Column tab
+
+Click Custom Column
+
+A window will pop up.
+
+Step 4: Paste the code
+Column name
+
+At the top, enter:
+
+Minutes
+
+Formula box
+
+Delete everything in the box and paste this code:
+
+let
+    txt = [View Duration],
+
+    h =
+        if Text.Contains(txt, "h") then
+            Number.FromText(Text.BeforeDelimiter(txt, "h"))
+        else
+            0,
+
+    m =
+        if Text.Contains(txt, "min") then
+            if Text.Contains(txt, "h") then
+                Number.FromText(
+                    Text.Select(
+                        Text.BeforeDelimiter(Text.AfterDelimiter(txt, "h"), "min"),
+                        {"0".."9"}
+                    )
+                )
+            else
+                Number.FromText(
+                    Text.Select(
+                        Text.BeforeDelimiter(txt, "min"),
+                        {"0".."9"}
+                    )
+                )
+        else
+            0
+in
+    h * 60 + m
+
+
+Click OK
+
+🎉 You’ll now see a new column with total minutes.
+
+Step 5: Set column type (important)
+
+Click the Minutes column header
+
+Go to Transform → Data Type
+
+Choose Whole Number or Decimal Number
+
+Step 6: Load back to Excel
+
+Click Home → Close & Load
+
+Your Excel sheet updates with the new column
